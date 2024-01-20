@@ -1,0 +1,31 @@
+/* App.css */
+/* ... existing styles ... */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+  }
+  
+  .navbar-left {
+    /* Style as needed */
+  }
+  
+  .navbar-right {
+    /* Style as needed */
+  }
+  
+  .info-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .info-button:hover {
+    background-color: #0056b3;
+  }

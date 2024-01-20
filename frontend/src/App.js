@@ -1,14 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import MyComponent from './component/mycomponent'; // Import the custom component
+import Navbar from './component/navbar'; // Import the custom component
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        
+        <Navbar/>
+        <MyComponent name="Alex" /> {/* Use the custom component here */}
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -21,5 +20,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
