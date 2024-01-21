@@ -56,6 +56,7 @@ const FormContainer = () => {
           <FormRow
             label="Age"
             type="number"
+            max="120"
             placeholder="years"
             value={formData.age}
             onChange={(e) => handleInputChange('age', e.target.value)}
