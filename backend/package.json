@@ -10,6 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "nodemon": "^3.0.3",
     "yarn": "^1.22.21"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0"
   }
 }
