@@ -50,7 +50,7 @@ const FormContainer = () => {
     <div className="w-1/3 mx-auto justify-center ">
       <div className="bg-gray-200 p-4 rounded-md shadow-md">
         <div className="justify-center">
-        <h2 className="pt-5 pb-3 text-4xl mb-4 text-center font-sans">Your  Info</h2>
+        <h2 className="pt-5 pb-3 text-4xl mb-4 text-center font-sans">Your Info</h2>
         </div>
         <form onSubmit={handleSubmit} className="justify-center">
           <FormRow
