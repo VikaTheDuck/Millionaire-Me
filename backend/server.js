@@ -1,6 +1,10 @@
-const express = require("express");
+import express from "express";
+import calculateDebt from "./calculateDebt.js";
+import calculateInvesting from "./calculateInvesting.js";
+import cors from "cors";
 const app = express();
 const port = 3003;
+app.use(cors());
 
 function validateFormData(formData) {
     const errors = {};
@@ -34,7 +38,8 @@ function isDebtHigh(debt, income) {
 }
 
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+    console.log(calculateInvesting);
+    res.json(calculateDebt());
 });
 
 app.post("/calculate", (req, res) => {
