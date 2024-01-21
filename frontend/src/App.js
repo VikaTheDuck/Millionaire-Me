@@ -10,7 +10,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        
         <Navbar/>
         <MyComponent name="Alex" /> {/* Use the custom component here */}
         <a
@@ -27,6 +26,7 @@ function App() {
             {/* <Route path="/" exact component={Home} /> */}
             {/* <Route path="/form" component={Form} /> */}
             <Route path="/result" element={ <ResultPage/>} />
+            
           </Routes>
         </Router>
       </header>
