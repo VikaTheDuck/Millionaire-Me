@@ -15,9 +15,9 @@ function calculateDebt(debt, debtInterest, debtTime) {
     }
 
     const monthly = 12; // 12 months in a year for payment. Debt time assumed to be in years.
-    const numerator = debt * ((debtInterest * 100) / monthly);
+    const numerator = debt * ((debtInterest / 100) / monthly);
     const denominator =
-        1 - (1 + (debtInterest * 100) / monthly) ** (-debtTime * monthly);
+        1 - (1 + (debtInterest / 100) / monthly) ** (-debtTime * monthly);
 
     if (denominator === 0) {
         throw new Error("Invalid parameters. The denominator cannot be zero.");

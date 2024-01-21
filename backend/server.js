@@ -19,7 +19,9 @@ app.get("/info", (req, res) => {
 
 app.post("/calculate", (req, res) => {
     const data = req.body; // Parsed data from JSON
-    let result = { yearCalculation: 0, monthlyPayment: 0 };
+
+    // add monthArray and savingsArray to this result
+    let result = { yearCalculation: 0, monthlyPayment: 0 ,savingsArray: [], monthsArray: []};
     const targetAmount = 1000000; // 1 million dollars :)
     try {
         validateFormData(data); // Throws an error if invalid
@@ -44,14 +46,34 @@ app.post("/calculate", (req, res) => {
         const inflationRate = 0.02; // 2% inflation rate average in Canada
         const annualInterestRate = 0.14; // 14% average annual return for VFV.TO over last 10 years
 
-        result.yearCalculation += Number(
-            calculateInvesting(
-                disposableIncome,
-                annualInterestRate,
-                inflationRate,
-                targetAmount
-            )
+        const investingResult = calculateInvesting(
+            disposableIncome,
+            annualInterestRate,
+            inflationRate,
+            targetAmount
         );
+
+        result.yearCalculation += Number(investingResult.yearCalculation);
+        result.savingsArray = investingResult.savingsArray;
+        result.monthsArray = investingResult.monthsArray;
+
+        // Only the first number, not the 
+        // result.yearCalculation += Number(
+        //     calculateInvesting(
+        //         disposableIncome,
+        //         annualInterestRate,
+        //         inflationRate,
+        //         targetAmount
+        //     )
+        // );
+
+        // result.
+
+        //result.savingsArray = ...a
+        //result.monthsArray = ...
+        // TODO: Find a way to return the arrays to go outside the calculatingInvesting function
+
+        //result.
 
         storedData = result;
         res.json({

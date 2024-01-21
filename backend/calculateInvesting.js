@@ -9,10 +9,18 @@ function calculateInvesting(
     let months = 0;
     const maxAge = 70 * 12;
 
+    let savingsArray = [];
+    let monthsArray = [];
+
     while (savings < targetAmount) {
+        
         savings += monthlyInvestment;
         savings *= 1 + annualInterestRate / 12;
         savings /= 1 + inflationRate / 12;
+
+        savingsArray.push(savings);
+        monthsArray.push(months);
+
         months += 1;
         // If the number of months is larger than the max age then it will throw an error.
         if (months > maxAge) {
@@ -21,8 +29,12 @@ function calculateInvesting(
                     " budget then please be okay with not being a millionaire."
             );
         }
+
     }
-    return Math.round(months / 12);
+    const years = Math.round(months / 12);
+    // NOTE: We are now returning arrays on the outside as well
+    return  ({ yearCalculation: years , savingsArray, monthsArray });
+   // return  ({ Math.round(months / 12), savingsArray, monthsArray });
 }
 
 export default calculateInvesting;
