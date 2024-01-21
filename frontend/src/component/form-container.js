@@ -56,21 +56,21 @@ const FormContainer = () => {
           <FormRow
             label="Age"
             type="number"
-            placeholder="0"
+            placeholder="years"
             value={formData.age}
             onChange={(e) => handleInputChange('age', e.target.value)}
           />
           <FormRow
             label="Savings"
             type="number"
-            placeholder="$"
+            placeholder="0.00$"
             value={formData.savings}
             onChange={(e) => handleInputChange('savings', e.target.value)}
           />
           <FormRow
             label="Debt"
             type="number"
-            placeholder="$"
+            placeholder="0.00$"
             value={formData.debt}
             onChange={(e) => handleInputChange('debt', e.target.value)}
           />
@@ -84,21 +84,21 @@ const FormContainer = () => {
           <FormRow
             label="Debt Time to pay off"
             type="number"
-            placeholder="0"
+            placeholder="years"
             value={formData.debtTime}
             onChange={(e) => handleInputChange('debtTime', e.target.value)}
           />
           <FormRow
             label="Income"
             type="number"
-            placeholder="$"
+            placeholder="0.00$"
             value={formData.income}
             onChange={(e) => handleInputChange('income', e.target.value)}
           />
           <FormRow
             label="Monthly Spending"
             type="number"
-            placeholder="$"
+            placeholder="0.00$"
             value={formData.monthlySpend}
             onChange={(e) => handleInputChange('monthlySpend', e.target.value)}
           />
