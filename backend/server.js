@@ -6,6 +6,7 @@ const app = express();
 const port = 3003;
 app.use(cors());
 
+
 function validateFormData(formData) {
     const errors = {};
     // Validate Age
@@ -29,15 +30,12 @@ function validateFormData(formData) {
     return formData;
 }
 
-function calculateDebtToIncomeRatio(debt, income) {
-    return income - debt;
-}
-
-function isDebtHigh(debt, income) {
-    return income - debt;
-}
-
 app.get("/", (req, res) => {
+    console.log(calculateInvesting);
+    res.json(calculateDebt());
+});
+
+app.get("/info", (req, res) => {
     console.log(calculateInvesting);
     res.json(calculateDebt());
 });
@@ -47,20 +45,20 @@ app.post("/calculate", (req, res) => {
     try {
         validateFormData(data);
     } catch (error) {
-        return res.status(400).json(error);
+        res.json({
+            success: false,
+            message: "Invalid data",
+            data: {},
+        });
     }
 
     let result = 100; // Replace this with your calculation
 
-    const debtToIncomeRatio = calculateDebtToIncomeRatio(
-        data.debt,
-        data.income
-    );
-    const highDebt = isDebtHigh(debtToIncomeRatio, data.income);
-    if (highDebt) {
-        // Send back a response
-        res.json({ message: "Calculations complete", result: result });
-    }
+    res.json({
+        success: true,
+        message: "Valid data",
+        data: { result },
+    });
 });
 
 app.post("/success", (req, res) => {

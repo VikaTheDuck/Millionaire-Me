@@ -1,5 +1,5 @@
 function calculateDebt() {
-    return 100;
+    const numerator
 }
 
 export default calculateDebt;
