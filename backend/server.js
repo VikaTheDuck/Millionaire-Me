@@ -13,7 +13,7 @@ app.use(express.json());
 let storedData = {};
 
 app.get("/info", (req, res) => {
-    res.json(storedData);
+    res.json({ data: storedData });
 });
 
 app.post("/calculate", (req, res) => {
