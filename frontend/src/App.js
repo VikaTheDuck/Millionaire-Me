@@ -5,8 +5,6 @@ import InfoPage from './component/info-page';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
-//import Home from './Home';
-//import Form from './Form';
 import ResultPage from './component/resultpage';
 
 // success: true,
@@ -24,7 +22,7 @@ function App() {
             {/* <Route path="/" exact component={Home} /> */}
             {/* <Route path="/form" component={Form} /> */}
             <Route path="/result" element={ <ResultPage/>} />
-            <Route path="/info" element={<InfoPage/>} />
+            <Route path="/info" element={<InfoPage />} />
             <Route path="/" element={<FormContainer />} />
           </Routes>
 
