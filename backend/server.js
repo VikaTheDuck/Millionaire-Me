@@ -1,8 +1,10 @@
 import express from "express";
 import calculateDebt from "./calculateDebt.js";
 import calculateInvesting from "./calculateInvesting.js";
+import cors from "cors";
 const app = express();
 const port = 3003;
+app.use(cors());
 
 function validateFormData(formData) {
     const errors = {};
