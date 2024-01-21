@@ -6,7 +6,7 @@
 //   const [resultData, setResultData] = useState({
 //     yearCalculation: 0,
 //     monthlyPayment:0,
-    
+
 //   });
 
 //   useEffect(() => {
@@ -29,7 +29,7 @@
 
 //       const data = await response.json();
 
-//       // Array values here, be careful! 
+//       // Array values here, be careful!
 //       const { monthlyPayment,yearCalculation,savingsArray, monthsArray } = data.data;
 
 //       console.log(savingsArray, monthsArray); //cool
@@ -37,7 +37,7 @@
 //       <SavingsChart
 //         savingsArray={savingsArray}
 //         monthsArray={monthsArray}
-//       /> 
+//       />
 
 //       setResultData({
 //         yearCalculation,
@@ -47,7 +47,6 @@
 //       });
 //       console.log(resultData.savingsArray);
 //       // console.log("SAVINGS ARRAY    " + resultData);
-
 
 //     } catch (error) {
 //       console.error('Error fetching data:', error.message);
@@ -69,7 +68,7 @@
 //         },
 //       ],
 //     };
-  
+
 //     const chartOptions = {
 //       scales: {
 //         x: {
@@ -88,7 +87,7 @@
 //         },
 //       },
 //     };
-  
+
 //     return (
 //       <div>
 //           <h1>Your Result</h1>
@@ -102,11 +101,6 @@
 //       </div>
 //     );
 //   };
-
-
-
-
-
 
 //   // return (
 //   //   <div>
@@ -126,69 +120,88 @@
 
 // export default ResultPage;
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import MyBarChart from "./barChart.js";
 
 function ResultPage() {
-  const [resultData, setResultData] = useState({
-    yearCalculation: 0,
-    monthlyPayment: 0,
-    savingsArray: [],
-    monthsArray: [],
-  });
+    const [resultData, setResultData] = useState({
+        yearCalculation: 0,
+        monthlyPayment: 0,
+        savingsArray: [],
+        monthsArray: [],
+    });
 
-  useEffect(() => {
-    const fetchDataFromBackend = async () => {
-      try {
-        const response = await fetch('http://localhost:3003/info', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+    useEffect(() => {
+        const fetchDataFromBackend = async () => {
+            try {
+                const response = await fetch("http://localhost:3003/info", {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
 
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
 
-        const data = await response.json();
+                const data = await response.json();
 
-        const { monthlyPayment, yearCalculation, savingsArray, monthsArray } = data.data;
-        console.log(savingsArray, monthsArray);
+                const {
+                    monthlyPayment,
+                    yearCalculation,
+                    savingsArray,
+                    monthsArray,
+                } = data.data;
+                console.log(savingsArray, monthsArray);
 
-        setResultData({
-          yearCalculation,
-          monthlyPayment: Math.round(monthlyPayment * 100) / 100,
-          savingsArray,
-          monthsArray,
-        });
-      } catch (error) {
-        console.error('Error fetching data:', error.message);
-        // Handle error appropriately (e.g., show an error message to the user)
-      }
-    };
+                setResultData({
+                    yearCalculation,
+                    monthlyPayment: Math.round(monthlyPayment * 100) / 100,
+                    savingsArray,
+                    monthsArray,
+                });
+            } catch (error) {
+                console.error("Error fetching data:", error.message);
+                // Handle error appropriately (e.g., show an error message to the user)
+            }
+        };
 
-    fetchDataFromBackend();
-  }, []); // Empty dependency array to ensure the effect runs only once when the component mounts
+        fetchDataFromBackend();
+    }, []); // Empty dependency array to ensure the effect runs only once when the component mounts
 
-  return (
-<div className="text-center my-8 bg-gray-100 p-6 rounded-md shadow-md">
-  <h1 className="text-2xl font-bold mb-4 text-green-600">Your Result</h1>
-  <p>You will be a millionaire in {resultData.yearCalculation} years!</p>
-  <p>You will have a monthly payment to make of ${resultData.monthlyPayment}</p>
+    return (
+        <div className="text-center my-8 bg-gray-100 p-6 rounded-md shadow-md">
+            <h1 className="text-2xl font-bold mb-4 text-green-600">
+                Your Result
+            </h1>
+            <p>
+                You will be a millionaire in {resultData.yearCalculation} years!
+            </p>
+            <p>
+                You will have a monthly payment to make of $
+                {resultData.monthlyPayment}
+            </p>
+            <div>
+                <h1>My Savings Over Months</h1>
+                <MyBarChart />
+            </div>
 
-  <h2 className="text-xl font-bold my-4 pt-10">Here is an example of your savings Over Time</h2>
+            <h2 className="text-xl font-bold my-4 pt-10">
+                Here is an example of your savings Over Time
+            </h2>
 
-  <ul className="list-disc pl-4">
-    {resultData.monthsArray.slice(0, 4).map((month, index) => (
-      <li key={index} className="mb-2">
-        <span className="font-bold">Year:</span> {month}, <span className="font-bold">Savings:</span> ${resultData.savingsArray[index]}
-      </li>
-    ))}
-  </ul>
-</div>
-
-
-  );
+            <ul className="list-disc pl-4">
+                {resultData.monthsArray.slice(0, 4).map((month, index) => (
+                    <li key={index} className="mb-2">
+                        <span className="font-bold">Year:</span> {month},{" "}
+                        <span className="font-bold">Savings:</span> $
+                        {resultData.savingsArray[index]}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
 }
 
 export default ResultPage;
