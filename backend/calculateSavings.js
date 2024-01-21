@@ -21,6 +21,9 @@ function calculateSavings(disposableIncome, monthlyExpense) {
         const years = Math.round(months / 12);
         return years;
     }
+    else {
+        return 0;
+    }
 }
 
 export default calculateSavings;
