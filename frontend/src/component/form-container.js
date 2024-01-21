@@ -1,5 +1,6 @@
 // components/FormContainer.js
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import the useNavigate hook
 import FormRow from './form-row';
 
 const FormContainer = () => {
@@ -13,15 +14,36 @@ const FormContainer = () => {
     monthlySpend: '',
   });
 
+  const navigate = useNavigate(); // Initialize the useNavigate hook
+
   const handleInputChange = (name, value) => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Log or send the formData to the API
-    console.log('Form Data:', formData);
-    // You can send the formData to the API here
+
+    try {
+      const response = await fetch('http://localhost:3003/success', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      console.log('Form submitted successfully!');
+      // Navigate to the results page after successful form submission
+      navigate('/result', { replace: true });
+      // Optionally, you can handle the response from the server here
+    } catch (error) {
+      console.error('Error submitting form:', error.message);
+      // Handle error appropriately (e.g., show an error message to the user)
+    }
   };
 
   return (

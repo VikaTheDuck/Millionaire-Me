@@ -31,3 +31,4 @@ const FormRow = ({ label, type, value, onChange, infoText, onInfoClick }) => {
 };
 
 export default FormRow;
+

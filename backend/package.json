@@ -1,15 +1,21 @@
 {
-  "name": "millionaire-me",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "yarn": "^1.22.21"
-  }
+    "name": "millionaire-me",
+    "version": "1.0.0",
+    "description": "",
+    "type": "module",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "nodemon": "^3.0.3",
+        "yarn": "^1.22.21"
+    },
+    "devDependencies": {
+        "eslint": "^8.56.0"
+    }
 }
