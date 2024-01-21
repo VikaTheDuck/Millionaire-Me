@@ -16,13 +16,7 @@ function calculateSavings(disposableIncome, monthlyExpense) {
         }
     }
 
-    if (months > 6) {
-        // Convert months to years as an integer.
-        const years = Math.round(months / 12);
-        return years;
-    } else {
-        return 0;
-    }
+    return Math.round(months / 12);
 }
 
 export default calculateSavings;
