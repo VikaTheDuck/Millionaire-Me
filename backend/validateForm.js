@@ -7,7 +7,7 @@ function validateFormData(formData) {
     }
 
     // Validate Savings
-    if (!formData.savings || formData.savings < 0) {
+    if (formData.savings < 0) {
         throw new Error(
             "Invalid savings. Please enter 0 or a positive number. Negative savings is considered debt."
         );
@@ -34,13 +34,15 @@ function validateFormData(formData) {
 
     // Validate Income
     if (!formData.income || formData.income < 0) {
-        throw new Error("Invalid income. Please enter a positive number.");
+        throw new Error(
+            "Invalid income. If you are not earning any income, invest in yourself."
+        );
     }
 
     // Validate Monthly Spend
     if (!formData.monthlySpend || formData.monthlySpend < 0) {
         throw new Error(
-            "Invalid monthly spend. Please enter a positive number."
+            "Invalid monthly spend. Please enter a positive number, you can't spend negative money."
         );
     }
 

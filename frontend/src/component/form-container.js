@@ -24,7 +24,7 @@ const FormContainer = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3003/success', {
+      const response = await fetch('http://localhost:3003/calculate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

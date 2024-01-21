@@ -13,7 +13,7 @@ app.use(express.json());
 let storedData = {};
 
 app.get("/info", (req, res) => {
-    res.json(storedData);
+    res.json({ data: storedData });
 });
 
 app.post("/calculate", (req, res) => {
@@ -25,7 +25,7 @@ app.post("/calculate", (req, res) => {
 
         const disposableIncome = calculateDisposableIncome(
             data.income,
-            data.spending
+            data.monthlySpend
         );
         if (data.debtTime && data.debtInterest && data.debt) {
             result.monthlyPayment = calculateDebt(
@@ -36,7 +36,10 @@ app.post("/calculate", (req, res) => {
             result.yearCalculation += data.debtTime; // Add debt time to yearCalculation
         }
 
-        result.yearCalculation += calculateSavings(disposableIncome, data.monthlySpend);
+        result.yearCalculation += calculateSavings(
+            disposableIncome,
+            data.monthlySpend
+        );
 
         const inflationRate = 0.02; // 2% inflation rate average in Canada
         const annualInterestRate = 0.14; // 14% average annual return for VFV.TO over last 10 years
@@ -58,13 +61,12 @@ app.post("/calculate", (req, res) => {
         res.status(400).json({
             success: false,
             message: error.message,
-            data: { age: -1 },
+            data: { result },
         });
     }
 });
 
 app.post("/success", (req, res) => {
-    console.log(req.body);
     storedData = { data: { age: 50 } };
     res.json({
         success: true,

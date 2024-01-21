@@ -18,7 +18,7 @@ function calculateInvesting(
         if (months > maxAge) {
             throw new Error(
                 "The average life expectency is 80. If you are at 70 and don't have a" +
-                " budget then please be okay with not being a millionaire."
+                    " budget then please be okay with not being a millionaire."
             );
         }
     }
