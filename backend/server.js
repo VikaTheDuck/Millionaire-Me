@@ -70,7 +70,7 @@ app.post("/calculate", (req, res) => {
 });
 
 app.post("/success", (req, res) => {
-    storedData = req.body;
+    storedData = { age: 50 };
     res.json({
         success: true,
         message: "Valid data",
