@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-      <header className="App-header">
+
         <Navbar/>
         <Header name="Unlock Your Million-Dollar Potential with Millionaire Me!" />
           <Routes>
@@ -25,7 +25,7 @@ function App() {
             <Route path="/result" element={ <ResultPage/>} />
             <Route path="/" element={<FormContainer />} />
           </Routes>
-      </header>
+
       </Router>
     </div>
   );

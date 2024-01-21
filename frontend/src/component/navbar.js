@@ -8,8 +8,6 @@ function Navbar() {
       <div className="max-w-5xl mx-auto flex justify-between items-center">
         <p className="text-xl font-semibold">Millionaire Me</p>
         <div className="flex items-center space-x-4">
-          {/* Add your navigation links or other content here */}
-          <span className="text-sm">Your Navigation Links</span>
           <CustomButton onClick={() => console.log('Info Clicked')}>Info</CustomButton>
         </div>
       </div>

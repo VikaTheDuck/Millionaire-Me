@@ -47,10 +47,12 @@ const FormContainer = () => {
   };
 
   return (
-    <div className="center-container">
+    <div className="w-1/3 mx-auto justify-center ">
       <div className="bg-gray-200 p-4 rounded-md shadow-md">
-        <h2 className="text-2xl font-semibold mb-4">Your Info</h2>
-        <form onSubmit={handleSubmit}>
+        <div className="justify-center">
+        <h2 className="pt-5 pb-3 text-4xl mb-4 text-center font-sans">Your  Info</h2>
+        </div>
+        <form onSubmit={handleSubmit} className="justify-center">
           <FormRow
             label="Age"
             type="number"
@@ -93,12 +95,14 @@ const FormContainer = () => {
             value={formData.monthlySpend}
             onChange={(e) => handleInputChange('monthlySpend', e.target.value)}
           />
+          <div class="flex justify-center pl-3 p-4 pt-6">
           <button
             type="submit"
-            className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700"
+            class="px-4 py-1.5 flex-grow rounded-md shadow-lg bg-gradient-to-r from-green-400 to-lime-400 font-medium text-gray-100 block transition duration-300"
           >
             Submit
           </button>
+          </div>
         </form>
       </div>
     </div>
