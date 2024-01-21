@@ -1,20 +1,20 @@
-function calculateInvesting(monthlyInvestment, annualInterestRate, inflationRate, targetAmount) {
-    let investments = 0;
+// For ETF it does not take into account MER and yield, but this is minimal in the long run anyway
+function calculateInvesting(
+    monthlyInvestment,
+    annualInterestRate,
+    inflationRate,
+    targetAmount
+) {
+    let savings = 0;
     let months = 0;
 
-    // Loop to check the number of months it will take to reach the target amount.
-    while (investments < targetAmount) {
-        investments += monthlyInvestment;
-        investments *= (1 + annualInterestRate / 12);
-        investments /= (1 + inflationRate / 12);
+    while (savings < targetAmount) {
+        savings += monthlyInvestment;
+        savings *= 1 + annualInterestRate / 12;
+        savings /= 1 + inflationRate / 12;
         months += 1;
     }
-
-
-    if (months > 6) {
-        // Convert months to years as an integer
-        const years = Math.round(months / 12);
-        return years;
+    return Math.round(months / 12);
 }
 
 export default calculateInvesting;
