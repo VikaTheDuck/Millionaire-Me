@@ -25,5 +25,4 @@ function calculateInvesting(
     return Math.round(months / 12);
 }
 
-console.log(calculateInvesting(1000,0.07,0.02,1000000));
 export default calculateInvesting;
