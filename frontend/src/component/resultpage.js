@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import SavingsChart from './savingschart.js';
 
 function ResultPage() {
   const [resultData, setResultData] = useState({
     yearCalculation: 0,
-    monthlyPayment:0
+    monthlyPayment:0,
+    
   });
 
   useEffect(() => {
@@ -26,14 +28,22 @@ function ResultPage() {
 
       const data = await response.json();
 
-      console.log(data.data);
+      console.log("SAVINGS ARRAY    " + data.data);
 
-      const { monthlyPayment,yearCalculation } = data.data;
+      // Array values here, be careful! 
+      const { monthlyPayment,yearCalculation,savingsArray, monthsArray } = data.data;
+      //const { monthlyPayment,yearCalculation } = data.data;
+
 
       setResultData({
         yearCalculation,
-        monthlyPayment,
+        monthlyPayment: Math.round(monthlyPayment * 100) / 100,
+        savingsArray,
+        monthsArray
       });
+
+      console.log("SAVINGS ARRAY    " + resultData);
+
 
     } catch (error) {
       console.error('Error fetching data:', error.message);
@@ -44,10 +54,14 @@ function ResultPage() {
   return (
     <div>
       <h1>Your Result</h1>
-      <p>You will be a millionaire by {resultData.yearCalculation} years old!</p>
-      <p>You will have a monthly payment to make of {resultData.monthlyPayment}</p>
-      <p>You will have $1000000 by {resultData.yearCaluclation}</p>
-      {/* <p>Dollars: {resultData.dollars}</p> */}
+      <p>You will be a millionaire in {resultData.yearCalculation} years!</p>
+      <p>You will have a monthly payment to make of ${resultData.monthlyPayment}</p>
+      
+      {//BROKEN
+      /* <SavingsChart
+        savingsArray={resultData.savingsArray}
+        monthsArray={resultData.monthsArray}
+      /> */}
       {/* Render your chart component with chartData */}
     </div>
   );
