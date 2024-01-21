@@ -182,9 +182,12 @@ function ResultPage() {
                 You will have a monthly payment to make of $
                 {resultData.monthlyPayment}
             </p>
-            <div>
+            <div style={{ width: "50%", height: "300px" }}>
                 <h1>My Savings Over Months</h1>
-                <MyBarChart />
+                <MyBarChart
+                    savings={resultData.savingsArray}
+                    months={resultData.monthsArray}
+                />
             </div>
 
             <h2 className="text-xl font-bold my-4 pt-10">

@@ -2,15 +2,13 @@ import React from "react";
 import { Bar } from "react-chartjs-2";
 import "chart.js/auto";
 
-const MyBarChart = () => {
-    const months = [1, 2, 3];
-    const savings = [1000, 1001, 1002];
-
+// Updated MyBarChart to accept props
+const MyBarChart = ({ months, savings }) => {
     const data = {
         labels: months.map((month) => `Month ${month}`),
         datasets: [
             {
-                label: "Savings",
+                label: "Investments over time",
                 data: savings,
                 backgroundColor: "rgba(75, 192, 192, 0.2)",
                 borderColor: "rgba(75, 192, 192, 1)",
