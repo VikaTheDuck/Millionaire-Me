@@ -13,6 +13,7 @@ app.use(express.json());
 let storedData = {};
 
 app.get("/info", (req, res) => {
+    console.log(storedData);
     res.json({ data: storedData });
 });
 
@@ -24,8 +25,8 @@ app.post("/calculate", (req, res) => {
         validateFormData(data); // Throws an error if invalid
 
         const disposableIncome = calculateDisposableIncome(
-            data.income,
-            data.monthlySpend
+            Number(data.income),
+            Number(data.monthlySpend)
         );
         if (data.debtTime && data.debtInterest && data.debt) {
             result.monthlyPayment = calculateDebt(
@@ -33,22 +34,23 @@ app.post("/calculate", (req, res) => {
                 data.debtInterest,
                 data.debtTime
             );
-            result.yearCalculation += data.debtTime; // Add debt time to yearCalculation
+            result.yearCalculation += Number(data.debtTime); // Add debt time to yearCalculation
         }
 
-        result.yearCalculation += calculateSavings(
-            disposableIncome,
-            data.monthlySpend
+        result.yearCalculation += Number(
+            calculateSavings(disposableIncome, data.monthlySpend)
         );
 
         const inflationRate = 0.02; // 2% inflation rate average in Canada
         const annualInterestRate = 0.14; // 14% average annual return for VFV.TO over last 10 years
 
-        result.yearCalculation += calculateInvesting(
-            disposableIncome,
-            annualInterestRate,
-            inflationRate,
-            targetAmount
+        result.yearCalculation += Number(
+            calculateInvesting(
+                disposableIncome,
+                annualInterestRate,
+                inflationRate,
+                targetAmount
+            )
         );
 
         storedData = result;
