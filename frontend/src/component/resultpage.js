@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 function ResultPage() {
   const [resultData, setResultData] = useState({
-    age: 0,
-    dollars: 0,
+    yearCalculation: 0,
+    monthlyPayment:0
   });
 
   useEffect(() => {
@@ -25,33 +25,29 @@ function ResultPage() {
       }
 
       const data = await response.json();
-      const { age } = data.data;
 
-      // For demonstration purposes, you might want to calculate 'dollars' based on 'age'
-      const dollars = calculateDollars(age);
+      console.log(data.data);
+
+      const { monthlyPayment,yearCalculation } = data.data;
 
       setResultData({
-        age,
-        dollars,
+        yearCalculation,
+        monthlyPayment,
       });
+
     } catch (error) {
       console.error('Error fetching data:', error.message);
       // Handle error appropriately (e.g., show an error message to the user)
     }
   };
 
-  const calculateDollars = (age) => {
-    // For demonstration purposes, you might want to calculate 'dollars' based on 'age'
-    // Replace this logic with your actual calculation
-    return age * 10000;
-  };
-
   return (
     <div>
       <h1>Your Result</h1>
-      <p>You will be a millionaire by {resultData.age} years old!</p>
-      <p>You will have ${resultData.dollars} by {resultData.age}</p>
-      <p>Dollars: {resultData.dollars}</p>
+      <p>You will be a millionaire by {resultData.yearCalculation} years old!</p>
+      <p>You will have a monthly payment to make of {resultData.monthlyPayment}</p>
+      <p>You will have $1000000 by {resultData.yearCaluclation}</p>
+      {/* <p>Dollars: {resultData.dollars}</p> */}
       {/* Render your chart component with chartData */}
     </div>
   );
