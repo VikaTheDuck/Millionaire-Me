@@ -5,6 +5,7 @@ import cors from "cors";
 const app = express();
 const port = 3003;
 app.use(cors());
+app.use(express.json())
 
 let storedData = {};
 
@@ -70,6 +71,7 @@ app.post("/calculate", (req, res) => {
 });
 
 app.post("/success", (req, res) => {
+    console.log(req.body);
     storedData = { data: { age: 50 } };
     res.json({
         success: true,
