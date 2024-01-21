@@ -13,7 +13,6 @@ app.use(express.json());
 let storedData = {};
 
 app.get("/info", (req, res) => {
-    console.log(storedData);
     res.json({ data: storedData });
 });
 
