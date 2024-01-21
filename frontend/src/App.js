@@ -18,15 +18,6 @@ function App() {
       <Router>
       <header className="App-header">
         <Navbar/>
-        <MyComponent name="Alex" /> {/* Use the custom component here */}
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
         
           <Routes>
             {/* <Route path="/" exact component={Home} /> */}
