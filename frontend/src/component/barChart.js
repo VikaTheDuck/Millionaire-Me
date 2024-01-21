@@ -25,7 +25,9 @@ const MyBarChart = ({ months, savings }) => {
         },
     };
 
-    return <Bar data={data} options={options} />;
+    return (<div className="flex justify-center ">
+        <Bar data={data} options={options} />
+    </div>)
 };
 
 export default MyBarChart;
