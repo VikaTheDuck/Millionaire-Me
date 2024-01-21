@@ -1,21 +1,46 @@
 function validateFormData(formData) {
     // Validate Age
-    if (!formData.age) {
-        throw new Error("Age is required. Please enter your age.");
-    } else if (formData.age <= 0 || formData.age > 80) {
+    if (!formData.age || formData.age <= 0 || formData.age > 80) {
         throw new Error(
-            "Age must be a positive number and less than 80. Can you really live that long?"
+            "Invalid age. Please enter a positive number less than 80. If you are older than 80, please be okay with not being a millionaire."
         );
     }
 
-    // Validate Income
-    if (!formData.income) {
+    // Validate Savings
+    if (!formData.savings || formData.savings < 0) {
         throw new Error(
-            "Income is required. Please enter your monthly income."
+            "Invalid savings. Please enter 0 or a positive number. Negative savings is considered debt."
         );
-    } else if (formData.income < 0) {
+    }
+
+    // Validate Debt
+    if (formData.debt < 0) {
         throw new Error(
-            "Income must be a positive number. If you are unemployed, can you really invest?"
+            "Invalid debt. Please enter a positive number. Negative debt is considered savings."
+        );
+    }
+
+    // Validate Debt Interest
+    if (formData.debtInterest < 0) {
+        throw new Error(
+            "Invalid debt interest. Please enter a positive number."
+        );
+    }
+
+    // Validate Debt Time
+    if (formData.debtTime < 0) {
+        throw new Error("Invalid debt time. Please enter a positive number.");
+    }
+
+    // Validate Income
+    if (!formData.income || formData.income < 0) {
+        throw new Error("Invalid income. Please enter a positive number.");
+    }
+
+    // Validate Monthly Spend
+    if (!formData.monthlySpend || formData.monthlySpend < 0) {
+        throw new Error(
+            "Invalid monthly spend. Please enter a positive number."
         );
     }
 
