@@ -6,6 +6,7 @@ const app = express();
 const port = 3003;
 app.use(cors());
 
+let storedData = {};
 
 function validateFormData(formData) {
     const errors = {};
@@ -36,8 +37,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/info", (req, res) => {
-    console.log(calculateInvesting);
-    res.json(calculateDebt());
+    res.json(storedData);
 });
 
 app.post("/calculate", (req, res) => {
@@ -62,6 +62,7 @@ app.post("/calculate", (req, res) => {
 });
 
 app.post("/success", (req, res) => {
+    storedData = { data: { age: 50 } };
     res.json({
         success: true,
         message: "Valid data",
