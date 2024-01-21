@@ -18,7 +18,7 @@ app.get("/info", (req, res) => {
 
 app.post("/calculate", (req, res) => {
     const data = req.body; // Parsed data from JSON
-    let result = { age: 0, monthlyPayment: 0 };
+    let result = { yearCalculation: 0, monthlyPayment: 0 };
     const targetAmount = 1000000; // 1 million dollars :)
     try {
         validateFormData(data); // Throws an error if invalid
@@ -33,15 +33,15 @@ app.post("/calculate", (req, res) => {
                 data.debtInterest,
                 data.debtTime
             );
+            result.yearCalculation += data.debtTime; // Add debt time to yearCalculation
         }
-        result.age += data.debtTime; // Add debt time to age
 
-        result.age += calculateSavings(disposableIncome, data.monthlySpend);
+        result.yearCalculation += calculateSavings(disposableIncome, data.monthlySpend);
 
         const inflationRate = 0.02; // 2% inflation rate average in Canada
         const annualInterestRate = 0.14; // 14% average annual return for VFV.TO over last 10 years
 
-        result.age += calculateInvesting(
+        result.yearCalculation += calculateInvesting(
             disposableIncome,
             annualInterestRate,
             inflationRate,
