@@ -176,19 +176,20 @@ function ResultPage() {
                 Your Result
             </h1>
             <p>
-                You will be a millionaire in {resultData.yearCalculation} years!
+                You will be a millionaire when you are{" "}
+                {resultData.yearCalculation} years old!
             </p>
             <p>
-                You will have a monthly payment to make of $
+                You will have a monthly payment to your debt of $
                 {resultData.monthlyPayment}
             </p>
             <div className="w-3/4 mx-auto p-6 pt-10">
                 <h1>My Savings Over Months</h1>
                 <div>
-                <MyBarChart
-                    savings={resultData.savingsArray}
-                    months={resultData.monthsArray}
-                />
+                    <MyBarChart
+                        savings={resultData.savingsArray}
+                        months={resultData.monthsArray}
+                    />
                 </div>
             </div>
 
@@ -197,15 +198,15 @@ function ResultPage() {
             </h2>
 
             <ul className="list-none pl-4">
-    {resultData.monthsArray.slice(0, 4).map((month, index) => (
-        <li key={index} className="mb-2 pl-4">
-            <span className="font-bold">Year:</span> {month},{" "}
-            <span className="font-bold">Savings:</span> $
-            {resultData.savingsArray[index].toFixed(2)} {/* Truncate to 2 decimal places */}
-        </li>
-    ))}
-</ul>
-
+                {resultData.monthsArray.slice(0, 4).map((month, index) => (
+                    <li key={index} className="mb-2 pl-4">
+                        <span className="font-bold">Year:</span> {month},{" "}
+                        <span className="font-bold">Savings:</span> $
+                        {resultData.savingsArray[index].toFixed(2)}{" "}
+                        {/* Truncate to 2 decimal places */}
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 }

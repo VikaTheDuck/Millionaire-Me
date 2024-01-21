@@ -20,7 +20,12 @@ app.post("/calculate", (req, res) => {
     const data = req.body; // Parsed data from JSON
 
     // add monthArray and savingsArray to this result
-    let result = { yearCalculation: 0, monthlyPayment: 0 ,savingsArray: [], monthsArray: []};
+    let result = {
+        yearCalculation: Number(data.age),
+        monthlyPayment: 0,
+        savingsArray: [],
+        monthsArray: [],
+    };
     const targetAmount = 1000000; // 1 million dollars :)
     try {
         validateFormData(data); // Throws an error if invalid
@@ -56,7 +61,7 @@ app.post("/calculate", (req, res) => {
         result.savingsArray = investingResult.savingsArray;
         result.monthsArray = investingResult.monthsArray;
 
-        // Only the first number, not the 
+        // Only the first number, not the
         // result.yearCalculation += Number(
         //     calculateInvesting(
         //         disposableIncome,
