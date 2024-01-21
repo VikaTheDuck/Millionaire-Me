@@ -23,7 +23,7 @@ function calculateDebt(debt, debtInterest, debtTime) {
         throw new Error("Invalid parameters. The denominator cannot be zero.");
     }
 
-    return numerator / denominator;
+    return Math.round(numerator / denominator);
 }
 
 export default calculateDebt;
