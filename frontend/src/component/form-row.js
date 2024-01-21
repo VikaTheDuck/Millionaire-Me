@@ -3,7 +3,7 @@ import React from 'react';
 
 const FormRow = ({ label, type, value, placeholder, onChange, infoText, onInfoClick }) => {
   return (
-    <div class="grid grid-cols-1 pb-2 gap-4 sm:grid-cols-2">
+    <div className="grid grid-cols-1 pb-2 gap-4 sm:grid-cols-2">
     {/* <div class="m-auto"> */}
       <div>
       <label htmlFor={`exampleInput-${label}`} className="block pl-10 text-sm font-medium leading-6 text-gray-900">

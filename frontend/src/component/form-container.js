@@ -102,10 +102,10 @@ const FormContainer = () => {
             value={formData.monthlySpend}
             onChange={(e) => handleInputChange('monthlySpend', e.target.value)}
           />
-          <div class="flex justify-center pl-3 p-4 pt-6">
+          <div className="flex justify-center pl-3 p-4 pt-6">
           <button
             type="submit"
-            class="w-full md:w-2/3 lg:w-1/2 xl:w-1/3 px-4 py-2 rounded-md shadow-lg bg-gradient-to-r from-green-400 to-lime-400 font-medium text-gray-100 transition duration-300"
+            className="w-full md:w-2/3 lg:w-1/2 xl:w-1/3 px-4 py-2 rounded-md shadow-lg bg-gradient-to-r from-green-400 to-lime-400 font-medium text-gray-100 transition duration-300"
           >
             Submit
           </button>
