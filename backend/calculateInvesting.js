@@ -1,5 +1,16 @@
-function calculateInvesting() {
-    return 100;
+function calculateInvesting(monthlyInvestment, annualInterestRate, inflationRate, targetAmount) {
+    let savings = 0;
+    let months = 0;
+
+    while (savings < targetAmount) {
+        savings += monthlyInvestment;
+        savings *= (1 + annualInterestRate / 12);
+        savings /= (1 + inflationRate / 12);
+        months += 1;
+    }
+
+    const years = months / 12;
+    return years;
 }
 
 export default calculateInvesting;
